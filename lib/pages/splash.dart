@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gusto_neumorphic/gusto_neumorphic.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:pryc/widgets/rounded_options_card.dart';
+
+import '../widgets/video_card.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -68,7 +71,7 @@ class _SplashState extends State<Splash> {
                           fontFamily: "SF-Pro",
                           fontSize: Get.width * .077,
                           fontWeight: FontWeight.bold),
-                      style: NeumorphicStyle(
+                      style: const NeumorphicStyle(
                         shape: NeumorphicShape.convex,
                         color: Colors.black45,
                         // color: Colors.white.withOpacity(.57),
@@ -106,132 +109,18 @@ class _SplashState extends State<Splash> {
                 ),
               ),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Neumorphic(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.convex,
-                    depth: 9,
-                    boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                    color: Colors.grey.shade400,
-                    intensity: 9,
-                  ),
-                  margin: EdgeInsets.all(7),
-                  child: Neumorphic(
-                    curve: Neumorphic.DEFAULT_CURVE,
-                    style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      depth: -5,
-                      boxShape:
-                          NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                      color: Colors.grey.shade400,
-                      intensity: 9,
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 9, horizontal: 11),
-                    child: Text.rich(TextSpan(children: [
-                      WidgetSpan(
-                          child: NeumorphicIcon(
-                              CupertinoIcons.exclamationmark_circle_fill, style: NeumorphicStyle(
-                        color: Colors.black.withOpacity(.37)),
-                            size: Get.width * .051,
-                          ),
-                          alignment: PlaceholderAlignment.middle),
-                      TextSpan(
-                        text: "  scam  ",
-                        style: TextStyle(
-                          fontSize: Get.width * .035,
-                          fontFamily: "SF-Pro",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black45,
-                        ),
-                      )
-                    ])),
-                  ),
-                ),
-                Neumorphic(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.convex,
-                    depth: 9,
-                    boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                    color: Colors.grey.shade400,
-                    intensity: 9,
-                  ),
-                  margin: EdgeInsets.all(7),
-                  child: Neumorphic(
-                    curve: Neumorphic.DEFAULT_CURVE,
-                    style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      depth: -5,
-                      boxShape:
-                          NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                      color: Colors.grey.shade400,
-                      intensity: 9,
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 9, horizontal: 11),
-                    child: Text.rich(TextSpan(children: [
-                      WidgetSpan(
-                          child: NeumorphicIcon(
-                              CupertinoIcons.arrow_swap, style: NeumorphicStyle(
-                        color: Colors.black.withOpacity(.37)),
-                            size: Get.width * .051,
-                          ),
-                          alignment: PlaceholderAlignment.middle),
-                      TextSpan(
-                        text: "  activity  ",
-                        style: TextStyle(
-                          fontSize: Get.width * .035,
-                          fontFamily: "SF-Pro",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black45,
-                        ),
-                      )
-                    ])),
-                  ),
-                ),
-                Neumorphic(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.convex,
-                    depth: 9,
-                    boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                    color: Colors.grey.shade400,
-                    intensity: 9,
-                  ),
-                  margin: EdgeInsets.all(7),
-                  child: Neumorphic(
-                    curve: Neumorphic.DEFAULT_CURVE,
-                    style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      depth: -5,
-                      boxShape:
-                          NeumorphicBoxShape.roundRect(BorderRadius.circular(102)),
-                      color: Colors.grey.shade400,
-                      intensity: 9,
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 9, horizontal: 11),
-                    child: Text.rich(TextSpan(children: [
-                      WidgetSpan(
-                          child: NeumorphicIcon(
-                              CupertinoIcons.person_crop_circle_fill_badge_checkmark, style: NeumorphicStyle(
-                        color: Colors.black.withOpacity(.37)),
-                            size: Get.width * .051,
-                          ),
-                          alignment: PlaceholderAlignment.middle),
-                      TextSpan(
-                        text: "  advise  ",
-                        style: TextStyle(
-                          fontSize: Get.width * .035,
-                          fontFamily: "SF-Pro",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black45,
-                        ),
-                      )
-                    ])),
-                  ),
-                ),
+                RoundedOptionsCard(
+                    iconData: CupertinoIcons.exclamationmark_circle_fill,
+                    tag: "scam"),
+                RoundedOptionsCard(
+                    iconData: CupertinoIcons.arrow_swap, tag: "activity"),
+                RoundedOptionsCard(
+                    iconData:
+                        CupertinoIcons.person_crop_circle_fill_badge_checkmark,
+                    tag: "advise")
               ],
             ),
             Padding(
@@ -243,12 +132,14 @@ class _SplashState extends State<Splash> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const HugeIcon(icon: HugeIcons.strokeRoundedFolderDetails, color: Colors.black45),
+                        const HugeIcon(
+                            icon: HugeIcons.strokeRoundedFolderDetails,
+                            color: Colors.black45),
                         NeumorphicText(
                           "  your video details",
                           curve: Neumorphic.DEFAULT_CURVE.flipped,
                           textStyle: NeumorphicTextStyle(
-                            height: 0,
+                              height: 0,
                               fontFamily: "SF-Pro",
                               fontSize: Get.width * .057,
                               fontWeight: FontWeight.bold),
@@ -262,7 +153,6 @@ class _SplashState extends State<Splash> {
                         ),
                       ],
                     ),
-
                     SizedBox(
                       height: Get.width * .057,
                     ),
@@ -288,99 +178,19 @@ class _SplashState extends State<Splash> {
                               intensity: 11,
                             ),
                           ),
-                          HugeIcon(icon: Icons.more_vert_rounded, color: Colors.black)
+                          const HugeIcon(
+                              icon: Icons.more_vert_rounded,
+                              color: Colors.black)
                         ],
                       ),
                     ),
                     SizedBox(
                       height: Get.width * .077,
                     ),
-                    Neumorphic(
-                      style: NeumorphicStyle(
-                        shape: NeumorphicShape.convex,
-                        depth: 15,
-                        boxShape:
-                        NeumorphicBoxShape.roundRect(BorderRadius.circular(55)),
-                        color: Colors.grey.shade400,
-                        intensity: 3,
-                      ),
-                      child: Container(
-                        width: Get.width,
-                        height: Get.width * .49,
-                        // decoration: BoxDecoration(
-                        //   gradient: LinearGradient(
-                        //     begin: Alignment.topLeft,
-                        //     end: Alignment.bottomRight,
-                        //     colors: [
-                        //       Colors.purple,
-                        //       Colors.transparent,
-                        //       Colors.tealAccent
-                        //     ]
-                        //   )
-                        // ),
-                        // padding: EdgeInsets.all(3),
-
-                        child: Neumorphic(
-                          curve: Neumorphic.DEFAULT_CURVE,
-                          style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            depth: -5,
-                            color: Colors.grey,
-                            boxShape:
-                            NeumorphicBoxShape.roundRect(BorderRadius.circular(55)),
-                            // color: Colors.grey.shade400,
-                            intensity: 15,
-                          ),
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(55),
-                                child: Opacity(
-                                  opacity: .45,
-                                  child: Image.asset("assets/images/img_1.png",
-                                  height: Get.width * .49,
-                                  width: Get.width,
-                                  fit: BoxFit.cover,
-                                    color: Colors.black,
-                                    colorBlendMode: BlendMode.color,
-                                  ),
-                                ),
-                              ),
-                              Neumorphic(
-                                style: NeumorphicStyle(
-                                    shape: NeumorphicShape.convex,
-                                    boxShape: NeumorphicBoxShape.roundRect(
-                                        BorderRadius.circular(102)),
-                                    depth: 15,
-                                    intensity: 7,
-                                    lightSource: LightSource.topLeft,
-                                    color: Colors.white.withOpacity(.57)),
-                                child: Neumorphic(
-                                  style: NeumorphicStyle(
-                                      shape: NeumorphicShape.convex,
-                                      boxShape: NeumorphicBoxShape.roundRect(
-                                          BorderRadius.circular(102)),
-                                      depth: 7,
-                                      intensity: 7,
-                                      lightSource: LightSource.topLeft,
-                                      color: Colors.grey.shade300),
-                                  padding: const EdgeInsets.all(9),
-                                  // margin: EdgeInsets.all(11),
-                                  child: HugeIcon(
-                                    icon: HugeIcons.strokeRoundedPlay,
-                                    // icon: Icons.play_arrow_rounded,
-                                    size: Get.width * .1,
-                                    color: Colors.orangeAccent,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    VideoCard(),
+                    SizedBox(
+                      height: Get.width * .045,
                     ),
-                    SizedBox(height: Get.width * .045,),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 11.0),
                       child: Row(
@@ -388,8 +198,9 @@ class _SplashState extends State<Splash> {
                           Text.rich(TextSpan(children: [
                             WidgetSpan(
                                 child: NeumorphicIcon(
-                                  Icons.favorite_rounded, style: NeumorphicStyle(
-                                    color: Colors.black45),
+                                  Icons.favorite_rounded,
+                                  style: const NeumorphicStyle(
+                                      color: Colors.black45),
                                   size: Get.width * .045,
                                 ),
                                 alignment: PlaceholderAlignment.middle),
@@ -403,12 +214,15 @@ class _SplashState extends State<Splash> {
                               ),
                             )
                           ])),
-                          const SizedBox(width: 11,),
+                          const SizedBox(
+                            width: 11,
+                          ),
                           Text.rich(TextSpan(children: [
                             WidgetSpan(
                                 child: NeumorphicIcon(
-                                  Icons.comment, style: NeumorphicStyle(
-                                    color: Colors.black45),
+                                  Icons.comment,
+                                  style: const NeumorphicStyle(
+                                      color: Colors.black45),
                                   size: Get.width * .045,
                                 ),
                                 alignment: PlaceholderAlignment.middle),
